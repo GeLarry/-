@@ -1,0 +1,1725 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>大学就业求职竞争力整理助手</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --ink: #171a1f;
+      --muted: #656d78;
+      --line: #dfe3e8;
+      --primary: #2057a7;
+      --primary-2: #123d7a;
+      --soft-blue: #eaf2ff;
+      --soft-green: #e8f6ee;
+      --soft-amber: #fff3d7;
+      --soft-red: #ffecea;
+      --green: #138a45;
+      --blue: #246bca;
+      --amber: #9f6500;
+      --red: #c73b2f;
+      --violet: #6c4ab6;
+      --shadow: 0 14px 35px rgba(18, 35, 64, 0.08);
+      font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #eef4fb 0, rgba(246, 247, 249, 0) 330px),
+        var(--bg);
+    }
+
+    header {
+      padding: 26px 28px 18px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .topbar {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(24px, 3vw, 38px);
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 860px;
+      font-size: 14px;
+    }
+
+    .status-pill {
+      white-space: nowrap;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 999px;
+      padding: 9px 13px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    main {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 22px 28px 42px;
+      display: grid;
+      grid-template-columns: minmax(360px, 430px) minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-panel {
+      position: sticky;
+      top: 106px;
+      overflow: hidden;
+    }
+
+    .panel-head {
+      padding: 18px 18px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .panel-head h2, .report-section h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .panel-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    form {
+      padding: 16px 18px 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      display: grid;
+      gap: 7px;
+      font-weight: 650;
+      font-size: 13px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 10px 11px;
+      font: inherit;
+      font-size: 14px;
+      color: var(--ink);
+      background: #fff;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 92px;
+      resize: vertical;
+      line-height: 1.45;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(32, 87, 167, 0.12);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .masters-extra {
+      display: none;
+      padding: 12px;
+      border: 1px dashed #bdd0ea;
+      background: #f8fbff;
+      border-radius: 8px;
+      gap: 12px;
+    }
+
+    .masters-extra.show { display: grid; }
+
+    .mode-switch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .mode-btn {
+      color: var(--primary);
+      background: #fff;
+      border: 1px solid #cdddf5;
+      box-shadow: none;
+    }
+
+    .mode-btn.active {
+      color: #fff;
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .mode-btn:hover {
+      box-shadow: none;
+    }
+
+    .school-extra {
+      display: none;
+      gap: 12px;
+    }
+
+    .school-extra.show {
+      display: grid;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 7px;
+      padding: 11px 13px;
+      font: inherit;
+      font-weight: 750;
+      cursor: pointer;
+      color: #fff;
+      background: var(--primary);
+      transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+    }
+
+    button:hover {
+      background: var(--primary-2);
+      box-shadow: 0 8px 18px rgba(32, 87, 167, 0.18);
+      transform: translateY(-1px);
+    }
+
+    button.secondary {
+      background: #263445;
+    }
+
+    button.secondary:hover {
+      background: #172232;
+    }
+
+    button.ghost {
+      color: var(--primary);
+      background: var(--soft-blue);
+      border: 1px solid #cdddf5;
+    }
+
+    button.ghost:hover {
+      background: #dfeeff;
+      box-shadow: none;
+    }
+
+    .reports {
+      display: grid;
+      gap: 18px;
+    }
+
+    .empty-state {
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+      padding: 34px;
+    }
+
+    .empty-state strong {
+      display: block;
+      color: var(--ink);
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .report {
+      display: none;
+      overflow: hidden;
+    }
+
+    .report.show { display: block; }
+
+    .report-hero {
+      padding: 22px;
+      background: linear-gradient(135deg, #f7fbff, #ffffff 62%);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .verdict {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 7px 11px;
+      background: var(--soft-green);
+      color: var(--green);
+      font-weight: 750;
+      font-size: 13px;
+      margin-bottom: 11px;
+    }
+
+    .report-hero h2 {
+      margin: 0 0 8px;
+      font-size: 25px;
+      letter-spacing: 0;
+    }
+
+    .report-hero p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .score-circle {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(var(--primary) calc(var(--score) * 1%), #e8edf3 0);
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .score-circle::after {
+      content: "";
+      width: 82px;
+      height: 82px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .score-circle span {
+      position: relative;
+      z-index: 1;
+      font-size: 25px;
+      font-weight: 850;
+    }
+
+    .report-body {
+      padding: 20px 22px 24px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .metric b {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 99px;
+      background: #edf1f5;
+      overflow: hidden;
+    }
+
+    .bar > i {
+      display: block;
+      height: 100%;
+      width: var(--w);
+      background: var(--primary);
+      border-radius: 99px;
+    }
+
+    .report-section {
+      display: grid;
+      gap: 11px;
+    }
+
+    .analysis-list, .risk-list, .todo-list, .source-list {
+      margin: 0;
+      padding-left: 19px;
+      color: #27313e;
+      line-height: 1.68;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: #f0f3f7;
+      color: #2a3544;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .tag.fact { background: var(--soft-blue); color: var(--primary); }
+    .tag.infer { background: var(--soft-amber); color: var(--amber); }
+
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .plan-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px;
+      background: #fff;
+    }
+
+    .plan-card h3 {
+      margin: 0 0 9px;
+      font-size: 15px;
+    }
+
+    .plan-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 13px;
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .role-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 15px;
+      background: #fff;
+      display: grid;
+      gap: 12px;
+    }
+
+    .role-title {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .role-title h3 {
+      margin: 0;
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+
+    .role-heading {
+      display: grid;
+      gap: 7px;
+    }
+
+    .role-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .role-label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .role-label.target {
+      color: #2057a7;
+      background: #eaf2ff;
+      border: 1px solid #cdddf5;
+    }
+
+    .role-label.recommend {
+      color: #138a45;
+      background: #e8f6ee;
+      border: 1px solid #c5e8d2;
+    }
+
+    .match {
+      color: var(--green);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .mini {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .company-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .company {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 9px;
+      background: #fff;
+      font-size: 12px;
+      color: #111827;
+      font-weight: 700;
+    }
+
+    .tier {
+      margin-left: 4px;
+      font-weight: 850;
+    }
+
+    .tier.t0 { color: var(--green); }
+    .tier.t1 { color: var(--blue); }
+    .tier.t2 { color: var(--violet); }
+    .tier.t3 { color: var(--amber); }
+    .tier.t4 { color: var(--red); }
+
+    .radar-wrap {
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr);
+      gap: 13px;
+      align-items: center;
+    }
+
+    .radar {
+      width: 230px;
+      height: 230px;
+    }
+
+    .axis-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .axis-list span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .table th, .table td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      line-height: 1.45;
+    }
+
+    .table th {
+      background: #f3f6fa;
+      font-size: 12px;
+      color: #4e5967;
+    }
+
+    .table tr:last-child td { border-bottom: 0; }
+
+    .notice {
+      border: 1px solid #f2d69a;
+      background: #fff9eb;
+      color: #6f4a00;
+      border-radius: 8px;
+      padding: 12px 13px;
+      line-height: 1.55;
+      font-size: 13px;
+    }
+
+    .stale-banner {
+      display: none;
+      border: 1px solid #cdddf5;
+      background: #eef5ff;
+      color: #184a8b;
+      border-radius: 8px;
+      padding: 11px 13px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin: 0 0 14px;
+    }
+
+    .stale-banner.show {
+      display: block;
+    }
+
+    @media (max-width: 1040px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+      .form-panel {
+        position: static;
+      }
+    }
+
+    @media (max-width: 760px) {
+      header, main {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .topbar, .report-hero {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+      .grid-2, .score-grid, .plan-grid, .role-grid {
+        grid-template-columns: 1fr;
+      }
+      .radar-wrap {
+        grid-template-columns: 1fr;
+      }
+      .status-pill {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <h1>大学就业求职竞争力整理助手</h1>
+        <p class="subtitle">面向 QS200 内院校，生成国内中厂/大厂求职竞争力评估，并支持从学校、专业、学位和课程反推就业路线。事实项和经验判断会分开标注。</p>
+      </div>
+      <div class="status-pill">QS2027 前 200 知识库 · 含马来西亚</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel form-panel">
+      <div class="panel-head">
+        <h2>输入信息</h2>
+        <p id="formHint">先选择国家/地区，再选择学校。点击测试用例可自动填入你给的背景。</p>
+      </div>
+      <form id="profileForm">
+        <div class="mode-switch" aria-label="学校范围">
+          <button type="button" id="qsTopBtn" class="mode-btn active">QS前200</button>
+          <button type="button" id="qsAfterBtn" class="mode-btn">QS200之后</button>
+        </div>
+
+        <div class="grid-2">
+          <label id="countryLabel">国家/地区
+            <select id="country"></select>
+          </label>
+          <label id="universitySelectLabel">大学
+            <select id="university"></select>
+          </label>
+          <label id="customUniversityLabel" style="display:none;">大学
+            <input id="customUniversity" placeholder="如 北京交通大学 / 深圳大学" />
+          </label>
+        </div>
+
+        <div id="schoolExtra" class="school-extra">
+          <div class="grid-2">
+            <label>院校属性
+              <select id="schoolTier">
+                <option>自动识别</option>
+                <option>985</option>
+                <option>211</option>
+                <option>双非/海外非QS200</option>
+              </select>
+            </label>
+            <label>QS排名（可选）
+              <input id="customQsRank" type="number" min="1" placeholder="985/211可填，未知可空" />
+            </label>
+          </div>
+          <label>中国国内排名（QS200之后模式建议填写）
+            <input id="customChinaRank" type="number" min="1" placeholder="如 80；非985/211主要用国内排名参与分析" />
+          </label>
+        </div>
+
+        <div class="grid-2">
+          <label>学位等级
+            <select id="degree">
+              <option>本科</option>
+              <option selected>硕士</option>
+              <option>博士</option>
+            </select>
+          </label>
+          <label>专业名称
+            <input id="major" placeholder="如 Computer Science / 金融工程" />
+          </label>
+        </div>
+
+        <div id="mastersExtra" class="masters-extra">
+          <label>本科学校
+            <input id="bachelorSchool" placeholder="选择硕士/博士时填写，如 南京大学" />
+          </label>
+          <label>本科专业
+            <input id="bachelorMajor" placeholder="选择硕士/博士时填写，如 电子信息工程" />
+          </label>
+          <label class="doctor-extra">硕士学校
+            <input id="masterSchool" placeholder="选择博士时填写，如 香港科技大学" />
+          </label>
+          <label class="doctor-extra">硕士专业
+            <input id="masterMajor" placeholder="选择博士时填写，如 Data Science" />
+          </label>
+        </div>
+
+        <label>核心课程内容
+          <textarea id="courses" placeholder="粘贴课程列表，系统会识别硬技能和岗位相关性"></textarea>
+        </label>
+
+        <label>目标岗位
+          <textarea id="targetRoles" placeholder="如 产品经理、数据分析、商业分析、算法工程师、前端工程师、后端工程师、AI/ML工程师"></textarea>
+        </label>
+
+        <label>目标城市/行业
+          <textarea id="targetCities" placeholder="如 上海、杭州、深圳、广州；互联网、金融科技、企业软件"></textarea>
+        </label>
+
+        <label>个人背景
+          <textarea id="background" placeholder="实习、项目、语言、GPA、工作经历、年龄、籍贯等，可选"></textarea>
+        </label>
+
+        <div class="actions">
+          <button type="button" id="caseBtn" class="ghost">填入测试用例</button>
+          <button type="button" id="evaluateBtn">生成求职竞争力报告</button>
+          <button type="button" id="recommendBtn" class="secondary">推荐就业计划</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="reports">
+      <div id="empty" class="panel empty-state">
+        <div>
+          <strong>先填信息，再生成报告</strong>
+          <p>左侧表单会驱动学校认可度、课程实用性、岗位路线、城市和企业层级建议。</p>
+        </div>
+      </div>
+
+      <article id="competitionReport" class="panel report"></article>
+      <article id="careerReport" class="panel report"></article>
+    </section>
+  </main>
+
+  <script>
+    const universities = [
+      { rank: 1, name: "Massachusetts Institute of Technology (MIT)", country: "美国" },
+      { rank: 2, name: "Imperial College London", country: "英国" },
+      { rank: 2, name: "Stanford University", country: "美国" },
+      { rank: 4, name: "University of Oxford", country: "英国" },
+      { rank: 5, name: "Harvard University", country: "美国" },
+      { rank: 6, name: "University of Cambridge", country: "英国" },
+      { rank: 8, name: "UCL", country: "英国" },
+      { rank: 10, name: "National University of Singapore (NUS)", country: "新加坡" },
+      { rank: 11, name: "The University of Hong Kong", country: "中国香港" },
+      { rank: 12, name: "Nanyang Technological University, Singapore (NTU Singapore)", country: "新加坡" },
+      { rank: 13, name: "Peking University", country: "中国大陆" },
+      { rank: 14, name: "Tsinghua University", country: "中国大陆" },
+      { rank: 18, name: "The Chinese University of Hong Kong (CUHK)", country: "中国香港" },
+      { rank: 19, name: "The University of New South Wales (UNSW Sydney)", country: "澳大利亚" },
+      { rank: 20, name: "University of California, Berkeley (UCB)", country: "美国" },
+      { rank: 22, name: "The University of Melbourne", country: "澳大利亚" },
+      { rank: 26, name: "Fudan University", country: "中国大陆" },
+      { rank: 28, name: "The University of Sydney", country: "澳大利亚" },
+      { rank: 29, name: "Australian National University (ANU)", country: "澳大利亚" },
+      { rank: 31, name: "Monash University", country: "澳大利亚" },
+      { rank: 32, name: "University of Toronto", country: "加拿大" },
+      { rank: 33, name: "The Hong Kong University of Science and Technology", country: "中国香港" },
+      { rank: 36, name: "Shanghai Jiao Tong University", country: "中国大陆" },
+      { rank: 37, name: "King's College London", country: "英国" },
+      { rank: 40, name: "The University of Manchester", country: "英国" },
+      { rank: 47, name: "Zhejiang University", country: "中国大陆" },
+      { rank: 50, name: "The Hong Kong Polytechnic University", country: "中国香港" },
+      { rank: 52, name: "City University of Hong Kong", country: "中国香港" },
+      { rank: 55, name: "Carnegie Mellon University", country: "美国" },
+      { rank: 56, name: "Universiti Malaya (UM)", country: "马来西亚" },
+      { rank: 57, name: "University of Bristol", country: "英国" },
+      { rank: 58, name: "New York University (NYU)", country: "美国" },
+      { rank: 62, name: "London School of Economics and Political Science (LSE)", country: "英国" },
+      { rank: 68, name: "University of Birmingham", country: "英国" },
+      { rank: 68, name: "University of Warwick", country: "英国" },
+      { rank: 74, name: "University of Illinois Urbana-Champaign", country: "美国" },
+      { rank: 80, name: "University of Glasgow", country: "英国" },
+      { rank: 81, name: "University of California, San Diego (UCSD)", country: "美国" },
+      { rank: 87, name: "University of Technology Sydney (UTS)", country: "澳大利亚" },
+      { rank: 90, name: "Nanjing University", country: "中国大陆" },
+      { rank: 92, name: "University of Washington", country: "美国" },
+      { rank: 97, name: "University of Nottingham", country: "英国" },
+      { rank: 100, name: "Purdue University", country: "美国" },
+      { rank: 111, name: "University of Southampton", country: "英国" },
+      { rank: 113, name: "University of Waterloo", country: "加拿大" },
+      { rank: 119, name: "RMIT University", country: "澳大利亚" },
+      { rank: 126, name: "Macquarie University", country: "澳大利亚" },
+      { rank: 128, name: "Universiti Sains Malaysia (USM)", country: "马来西亚" },
+      { rank: 130, name: "Universiti Kebangsaan Malaysia (UKM)", country: "马来西亚" },
+      { rank: 134, name: "University of Science and Technology of China", country: "中国大陆" },
+      { rank: 138, name: "Universiti Putra Malaysia (UPM)", country: "马来西亚" },
+      { rank: 146, name: "Tongji University", country: "中国大陆" },
+      { rank: 158, name: "Universiti Teknologi Malaysia (UTM)", country: "马来西亚" },
+      { rank: 165, name: "Wuhan University", country: "中国大陆" },
+      { rank: 190, name: "Harbin Institute of Technology", country: "中国大陆" },
+      { rank: 191, name: "Universitas Indonesia", country: "印度尼西亚" },
+      { rank: 195, name: "University of Wollongong", country: "澳大利亚" }
+    ];
+
+    const sourceLinks = [
+      { text: "QS World University Rankings 2027 官方榜单", url: "https://www.topuniversities.com/world-university-rankings" },
+      { text: "用户提供的 QS2027 前 200 知识库", url: "#" },
+      { text: "Universiti Sains Malaysia 官方项目与课程页，需以学校最新页面为准", url: "https://www.usm.my/" },
+      { text: "国家统计局、工信部及公开招聘 JD，用于行业与岗位趋势交叉验证", url: "https://www.stats.gov.cn/" },
+      { text: "公开招聘平台与公司校招页，用于薪资和岗位能力样本对照", url: "#" }
+    ];
+
+    const tierColors = { T0: "t0", T1: "t1", T2: "t2", T3: "t3", T4: "t4" };
+
+    const chinaUniversityProfiles = [
+      { name: "清华大学", tier: "985", qsRank: 14, chinaRank: 1 },
+      { name: "北京大学", tier: "985", qsRank: 13, chinaRank: 2 },
+      { name: "浙江大学", tier: "985", qsRank: 47, chinaRank: 3 },
+      { name: "上海交通大学", tier: "985", qsRank: 36, chinaRank: 4 },
+      { name: "复旦大学", tier: "985", qsRank: 26, chinaRank: 5 },
+      { name: "中国科学技术大学", tier: "985", qsRank: 134, chinaRank: 6 },
+      { name: "南京大学", tier: "985", qsRank: 90, chinaRank: 7 },
+      { name: "哈尔滨工业大学", tier: "985", qsRank: 190, chinaRank: 10 },
+      { name: "同济大学", tier: "985", qsRank: 146, chinaRank: 15 },
+      { name: "武汉大学", tier: "985", qsRank: 165, chinaRank: 9 },
+      { name: "华东理工大学", tier: "211", qsRank: null, chinaRank: 45 },
+      { name: "南京航空航天大学", tier: "211", qsRank: null, chinaRank: 37 },
+      { name: "南京理工大学", tier: "211", qsRank: null, chinaRank: 36 },
+      { name: "苏州大学", tier: "211", qsRank: null, chinaRank: 43 },
+      { name: "南京师范大学", tier: "211", qsRank: null, chinaRank: 52 },
+      { name: "南京邮电大学", tier: "双非/海外非QS200", qsRank: null, chinaRank: 86 },
+      { name: "杭州电子科技大学", tier: "双非/海外非QS200", qsRank: null, chinaRank: 91 },
+      { name: "深圳大学", tier: "双非/海外非QS200", qsRank: null, chinaRank: 70 },
+      { name: "上海理工大学", tier: "双非/海外非QS200", qsRank: null, chinaRank: 100 }
+    ];
+
+    const roleTemplates = {
+      "产品经理": {
+        match: 74,
+        difficulty: "中等偏高",
+        summary: "传统工科加 EHS 经历能支撑 B 端、工业软件、数据产品的业务理解；短板是互联网产品方法、数据指标和作品集。",
+        salaryFresh: "18-30 万/年",
+        salaryFuture: "35-90 万/年；头部平台或垂直行业专家可更高",
+        pressure: "中高：跨团队推进、需求变化快、结果导向强",
+        perks: "成长路径宽、离业务近、非 IT 背景更容易讲出行业差异化",
+        companies: [["阿里巴巴", "T0"], ["腾讯", "T0"], ["字节跳动", "T0"], ["美团", "T1"], ["蚂蚁集团", "T1"], ["携程", "T2"], ["用友", "T3"]],
+        radar: [74, 70, 68, 76, 72, 66]
+      },
+      "数据分析": {
+        match: 76,
+        difficulty: "中等",
+        summary: "课程有研究方法、审计评估、身份管理等结构化分析训练；补齐 SQL、Python、统计和 BI 后，转入业务分析较顺。",
+        salaryFresh: "16-28 万/年",
+        salaryFuture: "32-75 万/年；数据产品/策略分析方向上限更高",
+        pressure: "中等：周期性复盘多，对业务敏感度要求高",
+        perks: "入门路径清晰，作品集可直接证明能力，城市选择广",
+        companies: [["阿里巴巴", "T0"], ["字节跳动", "T0"], ["拼多多", "T1"], ["网易", "T1"], ["哔哩哔哩", "T2"], ["得物", "T2"], ["泛微", "T3"]],
+        radar: [82, 78, 76, 70, 75, 72]
+      },
+      "商业分析": {
+        match: 75,
+        difficulty: "中等",
+        summary: "适合用工科背景切制造、能源、供应链、企业服务和金融科技。重点是案例表达、商业建模和数据看板。",
+        salaryFresh: "17-30 万/年",
+        salaryFuture: "35-100 万/年；咨询或战略岗位波动较大",
+        pressure: "中高：项目节奏紧，材料表达和业务判断要求高",
+        perks: "不必强依赖纯研发能力，适合复合背景做行业数字化",
+        companies: [["麦肯锡", "T0"], ["BCG", "T0"], ["贝恩", "T0"], ["埃森哲", "T1"], ["德勤", "T1"], ["阿里云", "T1"], ["携程", "T2"]],
+        radar: [78, 76, 73, 74, 78, 70]
+      },
+      "前端工程师": {
+        match: 56,
+        difficulty: "高",
+        summary: "专业课程不直接覆盖前端工程体系。若目标是高薪 IT，需用可上线项目、TypeScript、React/Vue 和工程化能力补证据。",
+        salaryFresh: "18-32 万/年",
+        salaryFuture: "35-90 万/年；专家或全栈方向更稳",
+        pressure: "中高：迭代频繁，对细节、性能和协作要求高",
+        perks: "作品可视化强，非科班也能用项目快速建立可信度",
+        companies: [["字节跳动", "T0"], ["腾讯", "T0"], ["阿里巴巴", "T0"], ["美团", "T1"], ["小红书", "T1"], ["BOSS直聘", "T2"], ["有赞", "T3"]],
+        radar: [58, 56, 82, 64, 62, 70]
+      },
+      "后端工程师": {
+        match: 58,
+        difficulty: "高",
+        summary: "信息安全硕士能提供系统与风险意识，但国内后端初筛通常看语言栈、数据结构、数据库和分布式项目。",
+        salaryFresh: "20-38 万/年",
+        salaryFuture: "45-120 万/年；平台研发和架构方向上限高",
+        pressure: "高：技术考核硬，稳定性和交付责任重",
+        perks: "薪资上限高，技术路线长期价值明确",
+        companies: [["阿里巴巴", "T0"], ["腾讯", "T0"], ["字节跳动", "T0"], ["华为", "T1"], ["蚂蚁集团", "T1"], ["网易", "T2"], ["金蝶", "T3"]],
+        radar: [62, 60, 86, 66, 64, 68]
+      },
+      "算法工程师": {
+        match: 45,
+        difficulty: "很高",
+        summary: "硕士方向与算法岗有一定数据和安全交叉，但若缺少数学、机器学习论文/竞赛/工程项目，头部岗位难度明显偏高。",
+        salaryFresh: "25-50 万/年",
+        salaryFuture: "60-180 万/年；强平台与核心团队上限高、分化大",
+        pressure: "高：技术门槛、结果指标和持续学习压力都强",
+        perks: "薪资上限高，适合愿意长期补数学与工程的人",
+        companies: [["字节跳动", "T0"], ["阿里巴巴", "T0"], ["腾讯", "T0"], ["华为", "T1"], ["百度", "T1"], ["商汤科技", "T2"], ["虹软科技", "T3"]],
+        radar: [48, 46, 88, 54, 56, 60]
+      },
+      "AI/ML工程师": {
+        match: 48,
+        difficulty: "很高",
+        summary: "若走大模型应用、智能数据产品或安全数据分析，比纯模型研发更适合当前背景。需要补 Python、模型应用、评测和部署。",
+        salaryFresh: "24-48 万/年",
+        salaryFuture: "55-160 万/年；应用负责人或模型平台方向更高",
+        pressure: "高：技术更新快，项目结果和工程落地都要跟上",
+        perks: "行业需求强，但要用作品证明不是只会调用工具",
+        companies: [["字节跳动", "T0"], ["阿里巴巴", "T0"], ["腾讯", "T0"], ["百度", "T1"], ["华为", "T1"], ["科大讯飞", "T2"], ["云从科技", "T3"]],
+        radar: [54, 50, 90, 60, 62, 64]
+      },
+      "安全合规产品/风控分析": {
+        match: 88,
+        difficulty: "中等偏低",
+        summary: "这是信息安全课程与 EHS 风险治理经历最自然的交叉路线，适合进入金融科技、云服务、企业服务和合规科技。",
+        salaryFresh: "18-35 万/年",
+        salaryFuture: "40-110 万/年；产品负责人或治理专家方向更稳",
+        pressure: "中高：合规要求、跨部门协调和应急响应机制要求强",
+        perks: "差异化强，竞争没有纯研发岗拥挤，能吃到行业数字化和合规升级红利",
+        companies: [["蚂蚁集团", "T0"], ["阿里云", "T0"], ["腾讯云", "T0"], ["华为云", "T1"], ["奇安信", "T1"], ["深信服", "T2"], ["绿盟科技", "T3"]],
+        radar: [88, 84, 72, 82, 80, 78]
+      }
+    };
+
+    const axes = ["入行可行性", "背景匹配", "硬技能要求", "薪资上限", "城市机会", "长期韧性"];
+
+    const $ = (id) => document.getElementById(id);
+    const countrySelect = $("country");
+    const universitySelect = $("university");
+    const degreeSelect = $("degree");
+    const mastersExtra = $("mastersExtra");
+    let schoolMode = "top200";
+
+    function escapeHtml(value) {
+      return String(value || "").replace(/[&<>"']/g, (ch) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+      }[ch]));
+    }
+
+    function initSelectors() {
+      const countries = [...new Set(universities.map(u => u.country))].sort((a, b) => a.localeCompare(b, "zh-CN"));
+      countrySelect.innerHTML = countries.map(c => `<option ${c === "美国" ? "selected" : ""}>${c}</option>`).join("");
+      renderUniversities();
+    }
+
+    function renderUniversities() {
+      const country = countrySelect.value;
+      const list = universities.filter(u => u.country === country);
+      universitySelect.innerHTML = list.map(u => `<option value="${escapeHtml(u.name)}">QS${u.rank} · ${escapeHtml(u.name)}</option>`).join("");
+      const mit = list.find(u => u.name.includes("Massachusetts Institute of Technology"));
+      if (mit) universitySelect.value = mit.name;
+    }
+
+    function findChinaProfile(name) {
+      const clean = String(name || "").replace(/\s/g, "").toLowerCase();
+      return chinaUniversityProfiles.find(item => {
+        const itemName = item.name.replace(/\s/g, "").toLowerCase();
+        return clean && (clean.includes(itemName) || itemName.includes(clean));
+      }) || null;
+    }
+
+    function selectedSchoolTier(profile) {
+      const manual = $("schoolTier").value;
+      if (manual && manual !== "自动识别") return manual;
+      return profile?.tier || "双非/海外非QS200";
+    }
+
+    function rankBrandScore(uni) {
+      if (uni.mode === "top200") {
+        return uni.rank <= 50 ? 8.8 : uni.rank <= 100 ? 7.6 : uni.rank <= 150 ? 6.5 : 5.8;
+      }
+      const tier = uni.tier;
+      const qsRank = Number(uni.qsRank || 0);
+      const chinaRank = Number(uni.chinaRank || 0);
+      if ((tier === "985" || tier === "211") && qsRank) {
+        return qsRank <= 200 ? 6.0 : qsRank <= 500 ? 5.6 : 5.2;
+      }
+      if (tier === "985") return chinaRank && chinaRank <= 30 ? 6.2 : 5.8;
+      if (tier === "211") return chinaRank && chinaRank <= 60 ? 5.4 : 5.0;
+      if (chinaRank) return chinaRank <= 80 ? 4.8 : chinaRank <= 150 ? 4.3 : 3.8;
+      return 3.6;
+    }
+
+    function currentUniversity() {
+      if (schoolMode === "top200") {
+        return { ...(universities.find(u => u.name === universitySelect.value) || universities[0]), mode: "top200", tier: "QS前200" };
+      }
+      const name = $("customUniversity").value.trim() || "未填写学校";
+      const profile = findChinaProfile(name);
+      const tier = selectedSchoolTier(profile);
+      const qsRank = Number($("customQsRank").value || profile?.qsRank || 0) || null;
+      const chinaRank = Number($("customChinaRank").value || profile?.chinaRank || 0) || null;
+      return {
+        name,
+        country: "自填",
+        rank: qsRank || 999,
+        qsRank,
+        chinaRank,
+        tier,
+        mode: "after200",
+        profileMatched: Boolean(profile)
+      };
+    }
+
+    function setSchoolMode(mode) {
+      schoolMode = mode;
+      $("qsTopBtn").classList.toggle("active", mode === "top200");
+      $("qsAfterBtn").classList.toggle("active", mode === "after200");
+      $("countryLabel").style.display = mode === "top200" ? "" : "none";
+      $("universitySelectLabel").style.display = mode === "top200" ? "" : "none";
+      $("customUniversityLabel").style.display = mode === "after200" ? "" : "none";
+      $("schoolExtra").classList.toggle("show", mode === "after200");
+      $("formHint").textContent = mode === "top200"
+        ? "先选择国家/地区，再选择学校。点击测试用例可自动填入你给的背景。"
+        : "QS200之后模式请手动填写学校；命中本地库会自动带出985/211属性和国内排名，未命中时可手动填写排名。";
+      markStaleIfNeeded();
+    }
+
+    function autofillCustomSchool() {
+      const profile = findChinaProfile($("customUniversity").value);
+      if (!profile) return;
+      $("schoolTier").value = profile.tier;
+      if (profile.qsRank) $("customQsRank").value = profile.qsRank;
+      if (profile.chinaRank) $("customChinaRank").value = profile.chinaRank;
+    }
+
+    function toggleMasters() {
+      const needsPrior = degreeSelect.value === "硕士" || degreeSelect.value === "博士";
+      mastersExtra.classList.toggle("show", needsPrior);
+      mastersExtra.querySelectorAll(".doctor-extra").forEach(el => {
+        el.style.display = degreeSelect.value === "博士" ? "" : "none";
+      });
+    }
+
+    function normalizedCourseLines(courses) {
+      return String(courses || "")
+        .replace(/\\n/g, "\n")
+        .split(/\r?\n+/)
+        .map(line => line.trim())
+        .filter(Boolean);
+    }
+
+    function textOf(...parts) {
+      return parts.join(" ").toLowerCase();
+    }
+
+    function hasAny(text, words) {
+      return words.some(word => text.includes(word.toLowerCase()));
+    }
+
+    function signalSet(text) {
+      const cleanText = String(text || "").toLowerCase();
+      const forensicOnly = /forensic analytics/.test(cleanText) && !/business analytics|data analytics|big data|data mining|statistics|statistical|sql|python|bi|tableau|power bi|数据分析|统计|指标/.test(cleanText);
+      return {
+        data: !forensicOnly && hasAny(cleanText, ["business analytics", "data analytics", "big data", "data mining", "statistics", "statistical", "sql", "python", "bi", "tableau", "power bi", "数据分析", "统计", "指标", "数据挖掘"]),
+        product: hasAny(cleanText, ["product", "产品", "prd", "用户", "需求", "management", "governance", "audit", "risk", "商业", "运营"]),
+        engineering: hasAny(cleanText, ["software", "java", "c++", "go", "node", "react", "vue", "javascript", "typescript", "database", "backend", "frontend", "project", "项目", "系统", "编程", "前端", "后端"]),
+        ai: hasAny(cleanText, ["ai", "ml", "machine learning", "deep learning", "model", "nlp", "cv", "算法", "模型", "机器学习", "深度学习"]),
+        finance: hasAny(cleanText, ["finance", "financial", "bank", "accounting", "investment", "金融", "会计", "投行", "证券", "银行"]),
+        consulting: hasAny(cleanText, ["consulting", "strategy", "case", "market", "咨询", "战略", "市场", "商业分析"]),
+        governance: hasAny(cleanText, ["security", "identity", "access", "cryptography", "forensic", "audit", "compliance", "risk", "governance", "风控", "合规", "审计", "治理", "权限"])
+      };
+    }
+
+    function detectSignals(p) {
+      const majorCourse = signalSet(textOf(p.major, p.courses));
+      const role = signalSet(p.roles);
+      const background = signalSet(textOf(p.background, p.bachelorMajor));
+      const all = signalSet(textOf(p.major, p.courses, p.roles, p.cities, p.background, p.bachelorMajor));
+      return {
+        ...all,
+        course: majorCourse,
+        role,
+        background,
+        internship: hasAny(textOf(p.background), ["实习", "intern", "项目", "project", "工作", "经历", "experience"]),
+        oneYear: hasAny(textOf(p.major, p.background), ["1年", "一年", "one year", "1 year"]),
+        ehs: hasAny(textOf(p.background, p.bachelorMajor), ["ehs", "环境", "健康", "安全管理", "油气", "储运", "工科", "工程"])
+      };
+    }
+
+    function scoreFromProfile() {
+      const p = getProfile();
+      const uni = p.uni;
+      const degree = p.degree;
+      const signals = detectSignals(p);
+      const brand = rankBrandScore(uni);
+      const degreeBoost = degree === "博士" ? 7.8 : degree === "硕士" ? 6.8 : 6.1;
+      const courseHits = [signals.course.data, signals.course.product, signals.course.engineering, signals.course.ai, signals.course.finance, signals.course.governance].filter(Boolean).length;
+      const roleHits = [signals.role.data && signals.course.data, signals.role.product && signals.course.product, signals.role.engineering && signals.course.engineering, signals.role.ai && signals.course.ai, signals.role.finance && signals.course.finance, signals.role.governance && signals.course.governance].filter(Boolean).length;
+      const hasExperience = signals.internship;
+      const professionalFit = clamp(3.8 + roleHits * 1.05 + courseHits * 0.32 + (signals.ehs && (signals.course.product || signals.course.governance) ? 0.55 : 0) + (hasExperience ? 0.35 : 0), 3.5, 8.4);
+      const courseValue = clamp(3.9 + courseHits * 0.72 + (signals.course.engineering || signals.course.ai ? 0.45 : 0) + (normalizedCourseLines(p.courses).some(line => /project|项目/i.test(line)) ? 0.45 : 0), 3.6, 8.3);
+      const filterFriendly = clamp(brand * 0.68 + degreeBoost * 0.18 + (hasExperience ? 0.35 : 0), 4.4, 8.4);
+      const domestic = clamp(brand * 0.5 + professionalFit * 0.28 + (countrySelect.value === "马来西亚" ? 0.05 : 0.45) + (hasExperience ? 0.45 : 0), 4.3, 8.2);
+      const overall = (brand + professionalFit + courseValue + filterFriendly + domestic) / 5;
+      return {
+        brand: Number(brand.toFixed(1)),
+        degree: Number(degreeBoost.toFixed(1)),
+        professionalFit: Number(professionalFit.toFixed(1)),
+        courseValue: Number(courseValue.toFixed(1)),
+        filterFriendly: Number(filterFriendly.toFixed(1)),
+        domestic: Number(domestic.toFixed(1)),
+        overall: Number(overall.toFixed(1))
+      };
+    }
+
+    function metric(label, value) {
+      const pct = Math.round(value * 10);
+      return `<div class="metric"><b><span>${label}</span><span>${value}/10</span></b><div class="bar"><i style="--w:${pct}%"></i></div></div>`;
+    }
+
+    function sourceList() {
+      return `<ul class="source-list">${sourceLinks.map(s => `<li>${s.url === "#" ? escapeHtml(s.text) : `<a href="${s.url}" target="_blank" rel="noreferrer">${escapeHtml(s.text)}</a>`}</li>`).join("")}</ul>`;
+    }
+
+    function getProfile() {
+      return {
+        uni: currentUniversity(),
+        schoolMode,
+        degree: degreeSelect.value,
+        major: $("major").value.trim(),
+        courses: $("courses").value.trim(),
+        roles: $("targetRoles").value.trim(),
+        cities: $("targetCities").value.trim(),
+        background: $("background").value.trim(),
+        bachelorSchool: $("bachelorSchool").value.trim(),
+        bachelorMajor: $("bachelorMajor").value.trim(),
+        masterSchool: $("masterSchool").value.trim(),
+        masterMajor: $("masterMajor").value.trim()
+      };
+    }
+
+    function showOnly(id) {
+      $("empty").style.display = "none";
+      $("competitionReport").classList.toggle("show", id === "competitionReport");
+      $("careerReport").classList.toggle("show", id === "careerReport");
+    }
+
+    function courseFacts(p, signals) {
+      const lines = normalizedCourseLines(p.courses);
+      const courseItems = lines.filter(line => !/^semester\s+[ivx\d]+$/i.test(line));
+      const shown = courseItems.slice(0, 6).map(escapeHtml).join("、");
+      if (!lines.length) return "当前未填写课程，课程事实项无法判断；建议补充核心课名称、学分和项目课。";
+      const tags = [];
+      if (signals.course.data) tags.push("明确的数据分析/统计/BI");
+      if (signals.course.product) tags.push("业务治理/管理");
+      if (signals.course.engineering) tags.push("工程实践");
+      if (signals.course.ai) tags.push("AI/算法");
+      if (signals.course.finance) tags.push("金融商业");
+      if (signals.course.governance) tags.push("治理、风控或合规");
+      return `当前填写 ${courseItems.length || lines.length} 门/项课程，样例包括：${shown || lines.slice(0, 6).map(escapeHtml).join("、")}${(courseItems.length || lines.length) > 6 ? "等" : ""}。课程证据可识别方向：${tags.length ? tags.join("、") : "通用理论或待进一步拆分的课程" }。`;
+    }
+
+    function fitSentence(signals, roles) {
+      const roleText = roles || "未填写目标岗位";
+      const fits = [];
+      if (signals.course.data) fits.push("数据分析、商业分析、策略分析");
+      if (signals.course.product) fits.push("产品经理、运营策略、B 端产品");
+      if (signals.course.engineering) fits.push("前端、后端、测试开发或技术产品");
+      if (signals.course.ai) fits.push("AI 应用、算法工程、模型应用产品");
+      if (signals.course.finance) fits.push("金融科技、风控分析、投研支持");
+      if (signals.course.governance) fits.push("合规科技、风控产品、企业治理数字化");
+      return `用户目标岗位为「${escapeHtml(roleText)}」。基于当前专业和课程，优先匹配方向为：${fits.length ? fits.join("；") : "需要先明确岗位能力栈后再判断" }。`;
+    }
+
+    function schoolFactSentence(p) {
+      const uni = p.uni;
+      if (uni.mode === "top200") {
+        return `${escapeHtml(uni.name)} 位于用户提供的 QS2027 前 200 知识库，排名 QS${uni.rank}。`;
+      }
+      const qsPart = uni.qsRank ? `QS排名约 ${uni.qsRank}` : "QS排名未纳入评分";
+      const chinaPart = uni.chinaRank ? `中国国内排名约 ${uni.chinaRank}` : "中国国内排名未填写/未命中本地库";
+      const source = uni.profileMatched ? "本地学校库匹配" : "用户手动填写";
+      return `${escapeHtml(uni.name)} 为 QS200之后模式学校，院校属性：${escapeHtml(uni.tier)}；${qsPart}；${chinaPart}；来源：${source}。`;
+    }
+
+    function dynamicAnalysisItems(p, s, signals) {
+      const items = [
+        `<li><span class="tag fact">事实</span> ${schoolFactSentence(p)}</li>`,
+        `<li><span class="tag fact">事实</span> ${courseFacts(p, signals)}</li>`,
+        `<li><span class="tag infer">经验判断</span> ${fitSentence(signals, p.roles)}</li>`,
+        `<li><span class="tag infer">经验判断</span> 当前综合分 ${s.overall}/10，主要由学校排名、课程硬技能、目标岗位跨度、项目/实习证据共同影响。</li>`
+      ];
+      if (p.degree === "硕士" || p.degree === "博士") {
+        const masterPart = p.degree === "博士" ? `；硕士为 ${escapeHtml(p.masterSchool || "未填写")} ${escapeHtml(p.masterMajor || "未填写")}` : "";
+        items.push(`<li><span class="tag infer">经验判断</span> 本科为 ${escapeHtml(p.bachelorSchool || "未填写")} ${escapeHtml(p.bachelorMajor || "未填写")}${masterPart}；若教育背景方向跨度较大，需要在简历和面试中说明连续性。</li>`);
+      }
+      if (signals.ehs) {
+        items.push(`<li><span class="tag infer">经验判断</span> 工科或 EHS 类经历可迁移到流程治理、风险评估、跨部门协作和工业数字化场景。</li>`);
+      }
+      if (p.cities) {
+        items.push(`<li><span class="tag infer">经验判断</span> 目标城市「${escapeHtml(p.cities)}」适合按岗位密度、行业集中度和生活成本拆分投递优先级。</li>`);
+      }
+      return items.join("");
+    }
+
+    function dynamicRisks(p, signals) {
+      const risks = [];
+      if (signals.oneYear || p.major.includes("1年")) risks.push("1 年制项目需要用实习、项目、作品集补足经历厚度。");
+      if (countrySelect.value === "马来西亚") risks.push("马来西亚院校在国内认知度通常弱于英美港新头部院校，需要用 QS 排名、课程项目和成果材料加强说明。");
+      if (!signals.internship) risks.push("当前背景里缺少明确实习、项目或工作证据，简历筛选友好度会受影响。");
+      if ((p.roles.match(/、|,|，|\//g) || []).length >= 4) risks.push("目标岗位跨度较大，容易稀释求职叙事，建议保留 2 条主线和 1 条备选线。");
+      if ((p.roles.includes("算法") || p.roles.toLowerCase().includes("ai") || p.roles.toLowerCase().includes("ml")) && !signals.ai) risks.push("目标包含算法或 AI/ML，但课程中缺少明显模型、机器学习或数学建模证据。");
+      if ((p.roles.includes("前端") || p.roles.includes("后端")) && !signals.engineering) risks.push("目标包含工程岗，但课程中缺少明确编程语言、数据库、框架或工程项目证据。");
+      if (!p.courses) risks.push("未填写课程时，课程实用性只能低置信估算。");
+      return (risks.length ? risks : ["当前风险主要来自公开信息不足，建议补充课程、项目、实习和目标 JD。"]).map(r => `<li>${escapeHtml(r)}</li>`).join("");
+    }
+
+    function dynamicPlan(signals) {
+      const short = [];
+      const mid = [];
+      const long = [];
+      if (signals.data) {
+        short.push("完成 SQL、Python、Excel/BI 的小型分析作品");
+        mid.push("做 1 个业务指标看板和 1 份数据分析报告");
+      }
+      if (signals.product) {
+        short.push("写 1 份目标行业 PRD 或竞品分析");
+        mid.push("沉淀产品需求、用户流程和指标体系作品集");
+      }
+      if (signals.engineering) {
+        short.push("补 1 门主力语言和 Git/数据库基础");
+        mid.push("上线 1 个前后端或数据服务项目");
+      }
+      if (signals.ai) {
+        short.push("完成机器学习基础、模型调用和评测笔记");
+        mid.push("做 1 个可演示的 AI 应用项目");
+      }
+      if (!short.length) short.push("先用 10 个目标 JD 拆出岗位关键词");
+      if (!mid.length) mid.push("做 2 个能展示岗位能力的项目");
+      long.push("形成主线简历、作品集、面试题库和目标公司清单");
+      long.push("用实习、校友访谈或比赛经历补强可信度");
+      return {
+        short: short.slice(0, 3).join("；") + "。",
+        mid: mid.slice(0, 3).join("；") + "。",
+        long: long.join("；") + "。"
+      };
+    }
+
+    function dynamicTodos(signals) {
+      const todos = ["确认学校官方课程页链接，并保存课程截图或 PDF 作为事实材料。"];
+      if (signals.data) todos.push("收集 30 个数据/商业分析 JD，建立 SQL、Python、指标、BI 关键词表。");
+      if (signals.product) todos.push("准备 2 份产品文档：需求分析和竞品分析各一份。");
+      if (signals.engineering) todos.push("建立代码仓库，放入可运行项目、README 和部署说明。");
+      if (signals.ai) todos.push("准备模型应用项目说明，突出数据、评测、上线和业务价值。");
+      todos.push("每周复盘投递渠道、岗位、简历版本和反馈，逐步收窄目标。");
+      return todos.map(t => `<li>${escapeHtml(t)}</li>`).join("");
+    }
+
+    function renderCompetition() {
+      const p = getProfile();
+      const s = scoreFromProfile();
+      const signals = detectSignals(p);
+      const plan = dynamicPlan(signals);
+      const verdict = s.overall >= 7.6 ? "较适合" : s.overall >= 6.6 ? "谨慎选择但可操作" : "谨慎选择";
+      const reason = p.uni.rank <= 150
+        ? `学校在 QS200 内有明确排名；当前结论会随专业、课程、目标岗位和背景实时调整。`
+        : `学校仍处 QS200 内；国内就业转化更依赖项目、实习和岗位能力证据。`;
+
+      $("competitionReport").innerHTML = `
+        <div class="stale-banner" id="competitionStale">表单内容已变更，请重新点击“生成求职竞争力报告”更新分析。</div>
+        <div class="report-hero">
+          <div>
+            <div class="verdict">结论：${verdict}</div>
+            <h2>${escapeHtml(p.uni.name)} · ${escapeHtml(p.degree)} · ${escapeHtml(p.major || "未填写专业")}</h2>
+            <p>${reason}</p>
+          </div>
+          <div class="score-circle" style="--score:${Math.round(s.overall * 10)}"><span>${s.overall}</span></div>
+        </div>
+        <div class="report-body">
+          <section class="report-section">
+            <h2>竞争力评分</h2>
+            <div class="score-grid">
+              ${metric("学校品牌", s.brand)}
+              ${metric("专业匹配", s.professionalFit)}
+              ${metric("课程实用性", s.courseValue)}
+              ${metric("简历筛选友好度", s.filterFriendly)}
+              ${metric("国内就业转化", s.domestic)}
+              ${metric("综合建议", s.overall)}
+            </div>
+          </section>
+
+          <section class="report-section">
+            <h2>关键分析</h2>
+            <ul class="analysis-list">
+              ${dynamicAnalysisItems(p, s, signals)}
+            </ul>
+          </section>
+
+          <section class="report-section">
+            <h2>风险点</h2>
+            <ul class="risk-list">
+              ${dynamicRisks(p, signals)}
+            </ul>
+          </section>
+
+          <section class="report-section">
+            <h2>补强方案</h2>
+            <div class="plan-grid">
+              <div class="plan-card"><h3>短期：1-3 个月</h3><p>${escapeHtml(plan.short)}</p></div>
+              <div class="plan-card"><h3>中期：3-6 个月</h3><p>${escapeHtml(plan.mid)}</p></div>
+              <div class="plan-card"><h3>长期：6-12 个月</h3><p>${escapeHtml(plan.long)}</p></div>
+            </div>
+          </section>
+
+          <section class="report-section">
+            <h2>待办事项</h2>
+            <ul class="todo-list">
+              ${dynamicTodos(signals)}
+            </ul>
+          </section>
+
+          <section class="report-section">
+            <h2>引用来源</h2>
+            <div class="notice">事实项需要以 QS 官方榜单、学校官网课程页、就业报告、公开 JD 和校友去向为准；国内认可度与岗位匹配属于经验判断，已在正文中标注。</div>
+            ${sourceList()}
+          </section>
+        </div>
+      `;
+      lastRenderedReport = "competition";
+      lastRenderedSnapshot = profileSnapshot();
+      showOnly("competitionReport");
+    }
+
+    function pointsForRadar(values) {
+      const cx = 115, cy = 115, radius = 72;
+      return values.map((v, i) => {
+        const angle = (-90 + i * 60) * Math.PI / 180;
+        const r = radius * v / 100;
+        return `${cx + Math.cos(angle) * r},${cy + Math.sin(angle) * r}`;
+      }).join(" ");
+    }
+
+    function radarSvg(values) {
+      const grid = [25, 50, 75, 100].map(level => {
+        const pts = pointsForRadar(Array(6).fill(level));
+        return `<polygon points="${pts}" fill="none" stroke="#dfe3e8" stroke-width="1"></polygon>`;
+      }).join("");
+      const axesLines = Array.from({ length: 6 }, (_, i) => {
+        const angle = (-90 + i * 60) * Math.PI / 180;
+        return `<line x1="115" y1="115" x2="${115 + Math.cos(angle) * 72}" y2="${115 + Math.sin(angle) * 72}" stroke="#e4e8ee" stroke-width="1"></line>`;
+      }).join("");
+      const labels = axes.map((axis, i) => {
+        const angle = (-90 + i * 60) * Math.PI / 180;
+        const x = 115 + Math.cos(angle) * 100;
+        const y = 115 + Math.sin(angle) * 100;
+        const anchor = i === 0 || i === 3 ? "middle" : i < 3 ? "start" : "end";
+        const dy = i === 0 ? "-2" : i === 3 ? "10" : "4";
+        return `<text x="${x}" y="${y}" text-anchor="${anchor}" dy="${dy}" font-size="10.5" font-weight="700" fill="#4e5967">${axis}</text>`;
+      }).join("");
+      return `<svg class="radar" viewBox="0 0 230 230" role="img" aria-label="六维岗位评估">${grid}${axesLines}<polygon points="${pointsForRadar(values)}" fill="rgba(32,87,167,.22)" stroke="#2057a7" stroke-width="2"></polygon><circle cx="115" cy="115" r="2.5" fill="#2057a7"></circle>${labels}</svg>`;
+    }
+
+    function companyChips(companies) {
+      return `<div class="company-row">${companies.map(([name, tier]) => `<span class="company">${escapeHtml(name)}<span class="tier ${tierColors[tier]}">${tier}</span></span>`).join("")}</div>`;
+    }
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function roleCategory(name) {
+      if (name.includes("数据")) return "data";
+      if (name.includes("商业")) return "business";
+      if (name.includes("产品")) return "product";
+      if (name.includes("前端") || name.includes("后端")) return "engineering";
+      if (name.includes("算法") || name.includes("AI") || name.includes("ML")) return "ai";
+      if (name.includes("安全") || name.includes("风控") || name.includes("合规")) return "governance";
+      return "general";
+    }
+
+    function adjustRoleData(name, template, p, signals) {
+      const category = roleCategory(name);
+      let delta = 0;
+      if (category === "data" && signals.course.data) delta += 10;
+      if (category === "business" && (signals.course.data || signals.course.finance || signals.course.product)) delta += 7;
+      if (category === "product" && signals.course.product) delta += 8;
+      if (category === "engineering" && signals.course.engineering) delta += 10;
+      if (category === "ai" && signals.course.ai) delta += 13;
+      if (category === "governance" && signals.course.governance) delta += 13;
+      if (signals.ehs && ["product", "business", "governance"].includes(category)) delta += 4;
+      if (!signals.internship) delta -= 5;
+      if (category === "engineering" && !signals.course.engineering) delta -= 13;
+      if (category === "ai" && !signals.course.ai) delta -= 16;
+      if (category === "data" && !signals.course.data) delta -= 15;
+      if (category === "product" && !signals.course.product) delta -= 7;
+      if (category === "business" && !(signals.course.data || signals.course.finance || signals.course.product || signals.ehs)) delta -= 8;
+
+      const match = clamp(template.match + delta, 35, 95);
+      const radar = template.radar.map((value, index) => {
+        let adjusted = value + Math.round(delta * 0.75);
+        if (index === 2 && (category === "engineering" || category === "ai")) adjusted += signals.course.engineering || signals.course.ai ? 2 : -8;
+        if (index === 1 && signals.ehs && ["product", "business", "governance"].includes(category)) adjusted += 5;
+        if (index === 0 && !signals.internship) adjusted -= 5;
+        return clamp(adjusted, 25, 96);
+      });
+
+      const summaryParts = [];
+      if (category === "data") summaryParts.push(signals.course.data ? "专业/课程中有明确数据分析、统计、SQL/Python 或 BI 证据，可用作品继续强化。" : "专业/课程中没有明确数据分析课程证据；若投该岗，需要先补 SQL、统计、Python 和业务指标项目。");
+      if (category === "business") summaryParts.push(signals.course.finance || signals.course.product || signals.ehs ? "课程或背景能支撑行业理解、治理或商业判断，但仍需案例和数据化表达。" : "商业分析证据不足，需要补行业研究、案例分析和商业建模。");
+      if (category === "product") summaryParts.push(signals.course.product ? "专业/课程中包含管理、治理、需求或风险类信号，适合做 B 端/行业产品切入。" : "课程中产品方法证据不足，需要补 PRD、竞品分析、用户流程和指标体系。");
+      if (category === "engineering") summaryParts.push(signals.course.engineering ? "课程有工程或项目信号，但国内工程岗仍要看代码仓库和可运行项目。" : "课程中缺少明确编程语言、数据库或工程项目，直接投纯研发岗难度偏高。");
+      if (category === "ai") summaryParts.push(signals.course.ai ? "专业/课程中有 AI/ML 信号，可优先走 AI 应用或模型落地方向。" : "课程中缺少 AI/ML、模型或数学建模证据，核心算法/AI 工程路线应降级为备选。");
+      if (category === "governance") summaryParts.push(signals.course.governance ? "课程中治理、风险、身份、审计或合规信号明显，是当前背景的强匹配方向。" : "若想走该方向，需要补风险治理、权限体系和合规案例。");
+
+      const difficulty = match >= 82 ? "中等偏低" : match >= 72 ? "中等" : match >= 62 ? "中等偏高" : "高";
+      return {
+        ...template,
+        match,
+        radar,
+        difficulty,
+        summary: summaryParts.join(" ") || template.summary
+      };
+    }
+
+    function roleBadges(data) {
+      const badges = [];
+      if (data.isTarget) badges.push(`<span class="role-label target">目标</span>`);
+      if (data.isRecommended) badges.push(`<span class="role-label recommend">推荐</span>`);
+      return badges.length ? `<div class="role-badges">${badges.join("")}</div>` : "";
+    }
+
+    function roleCard(name, data) {
+      return `
+        <div class="role-card">
+          <div class="role-title">
+            <div class="role-heading">
+              <h3>${escapeHtml(name)}</h3>
+              ${roleBadges(data)}
+            </div>
+            <span class="match">${data.match}%</span>
+          </div>
+          <div class="radar-wrap">
+            ${radarSvg(data.radar)}
+            <div class="axis-list">${axes.map((a, i) => `<span>${a}：${data.radar[i]}/100</span>`).join("")}</div>
+          </div>
+          <div class="mini"><b>入行难度：</b>${data.difficulty}</div>
+          <div class="mini"><b>路线判断：</b>${data.summary}</div>
+          <table class="table">
+            <tr><th>应届生薪资范围</th><td>${data.salaryFresh}</td></tr>
+            <tr><th>未来薪资范围</th><td>${data.salaryFuture}</td></tr>
+            <tr><th>工作压力</th><td>${data.pressure}</td></tr>
+            <tr><th>行业特征</th><td>${data.perks}</td></tr>
+          </table>
+          ${companyChips(data.companies)}
+        </div>
+      `;
+    }
+
+    function requestedRoles() {
+      const raw = $("targetRoles").value;
+      const base = Object.keys(roleTemplates).filter(name => raw.includes(name));
+      return [...new Set(base)];
+    }
+
+    function autoRecommendationReasons(signals) {
+      const reasons = [];
+      if (signals.course.governance) reasons.push("课程中有治理、身份权限、审计、风险或合规证据");
+      if (signals.ehs) reasons.push("背景中有工科/EHS/风险治理经验，可迁移到行业数字化");
+      if (signals.course.product) reasons.push("课程中有管理、治理或业务流程信号");
+      if (signals.course.data) reasons.push("课程中有明确数据、统计或 BI 证据");
+      if (signals.course.engineering) reasons.push("课程中有工程项目或系统实践证据");
+      if (signals.course.ai) reasons.push("课程中有 AI/ML 或模型相关证据");
+      return reasons.length ? reasons.join("；") : "基于学校、专业、课程和背景的综合匹配度更高";
+    }
+
+    function recommendedRoleNames(p, signals) {
+      const selected = requestedRoles();
+      const selectedSet = new Set(selected);
+      const pool = Object.keys(roleTemplates)
+        .map(name => {
+          const data = adjustRoleData(name, roleTemplates[name], p, signals);
+          return [name, {
+            ...data,
+            isTarget: selectedSet.has(name),
+            isRecommended: false,
+            recommendReason: ""
+          }];
+        })
+        .sort((a, b) => b[1].match - a[1].match);
+
+      const targetBest = pool.filter(([name]) => selectedSet.has(name))[0]?.[1].match ?? 0;
+      const autoPicks = pool
+        .filter(([name, data]) => !selectedSet.has(name) && (data.match > targetBest || data.match >= 72))
+        .slice(0, 3)
+        .map(([name, data]) => [name, {
+          ...data,
+          isRecommended: true,
+          recommendReason: autoRecommendationReasons(signals)
+        }]);
+
+      const targetPicks = pool
+        .filter(([name]) => selectedSet.has(name))
+        .map(([name, data]) => [name, data]);
+
+      const merged = [...autoPicks, ...targetPicks];
+      if (!merged.length) {
+        return pool.slice(0, 5).map(([name, data], index) => [name, {
+          ...data,
+          isRecommended: index < 2,
+          recommendReason: autoRecommendationReasons(signals)
+        }]);
+      }
+
+      const seen = new Set();
+      return merged
+        .filter(([name]) => {
+          if (seen.has(name)) return false;
+          seen.add(name);
+          return true;
+        })
+        .sort((a, b) => b[1].match - a[1].match)
+        .slice(0, 8);
+    }
+
+    function careerHeadline(rolePairs, signals) {
+      const top = rolePairs[0]?.[0] || "数据分析";
+      if (signals.course.governance) return `就业推荐：优先考虑${top}，围绕治理、风控和合规能力展开`;
+      if (signals.course.ai) return `就业推荐：优先考虑${top}，从 AI 应用落地切入`;
+      if (signals.course.engineering) return `就业推荐：优先考虑${top}，用工程项目提高筛选通过率`;
+      if (signals.course.data) return `就业推荐：优先考虑${top}，以数据作品建立可信度`;
+      return `就业推荐：先收窄到${top}等可验证路线`;
+    }
+
+    function trendAdvice(p, signals) {
+      const items = [];
+      items.push(`<li><span class="tag infer">经验判断</span> 近年来企业更看重降本增效、数据驱动和业务数字化；当前课程中最容易被验证的能力是：${signals.course.governance ? "治理、风控或合规" : signals.course.data ? "数据分析" : signals.course.product ? "产品/业务理解" : signals.course.engineering ? "工程实现" : signals.course.ai ? "AI 应用" : "课程与项目成果"}。</li>`);
+      if (signals.ehs) items.push(`<li><span class="tag infer">经验判断</span> 工科或 EHS 背景适合转译为风险评估、流程治理、工业场景理解和跨部门推进能力。</li>`);
+      if (signals.course.ai) items.push(`<li><span class="tag infer">经验判断</span> 若目标高薪 IT，可优先做 AI 应用、数据产品或模型评测项目，降低直接进入核心算法岗的门槛。</li>`);
+      if (signals.course.engineering) items.push(`<li><span class="tag infer">经验判断</span> 工程岗要重点补代码仓库、部署链接、数据库和系统设计表达，避免只停留在课程描述。</li>`);
+      if (signals.role.data && !signals.course.data) items.push(`<li><span class="tag infer">经验判断</span> 你把数据分析列为目标岗位，但课程未体现明确数据分析训练，因此该路线应按补短板路线处理，而不是强匹配路线。</li>`);
+      if (signals.course.data) items.push(`<li><span class="tag fact">事实</span> 公开招聘 JD 中，数据/商业分析常见要求包括 SQL、Python、统计、BI、指标体系和业务解释。</li>`);
+      if (signals.course.product) items.push(`<li><span class="tag fact">事实</span> 公开产品类 JD 常见要求包括需求分析、PRD、跨团队沟通、数据指标和行业理解。</li>`);
+      return items.join("");
+    }
+
+    function recommendationSummary(rolePairs) {
+      const recommended = rolePairs.filter(([, data]) => data.isRecommended);
+      if (!recommended.length) return "";
+      return recommended.map(([name, data]) => `<li><span class="tag infer">推荐</span> ${escapeHtml(name)} 综合分 ${data.match}%，高于或不低于当前目标路线；推荐原因：${escapeHtml(data.recommendReason)}。</li>`).join("");
+    }
+
+    function cityRows(p, signals) {
+      const raw = p.cities || "上海、杭州、深圳、广州";
+      const cityNames = ["上海", "杭州", "深圳", "广州", "北京", "苏州", "南京", "成都"].filter(city => raw.includes(city));
+      const cities = cityNames.length ? cityNames : ["上海", "杭州", "深圳", "广州"];
+      const industry = signals.finance ? "金融科技、银行科技、风控分析" :
+        signals.course.ai ? "AI 应用、云服务、智能硬件、内容平台" :
+        signals.course.engineering ? "互联网平台、企业软件、云服务" :
+        signals.course.governance ? "云服务、金融科技、企业治理、合规科技" :
+        signals.course.data ? "互联网、咨询、零售、电商、企业数字化" :
+        "互联网、企业服务、咨询、传统行业数字化";
+      return cities.slice(0, 4).map((city, index) => {
+        const priority = index < 2 ? "第一梯队" : "第二梯队";
+        const reason = city === "上海" ? "岗位类型均衡，金融科技、咨询和企业服务机会多。" :
+          city === "杭州" ? "互联网平台和电商生态集中，产品、数据和技术岗位密度高。" :
+          city === "深圳" ? "科技、金融和硬件产业强，适合技术与商业结合岗位。" :
+          city === "广州" ? "竞争节奏相对缓，适合作为转行落地和作品补强城市。" :
+          "可作为补充城市，用来扩大投递样本和面试机会。";
+        return `<tr><td>${priority}</td><td>${city}</td><td>${industry}</td><td>${reason}</td></tr>`;
+      }).join("");
+    }
+
+    function queueRows(rolePairs) {
+      const top = rolePairs.slice(0, 3);
+      return top.map(([name, data], index) => {
+        const label = index === 0 ? "主线 A" : index === 1 ? "主线 B" : "备选 C";
+        const strategy = data.match >= 80 ? "作为优先投递方向，简历首页突出课程、项目和岗位关键词。" :
+          data.match >= 68 ? "作为同步投递方向，用作品集和实习经历补足证据。" :
+          "作为备选方向，先完成项目或技能补强后再集中投递。";
+        return `<tr><td>${label}</td><td>${escapeHtml(name)}</td><td>${companyChips(data.companies)}</td><td>${strategy}</td></tr>`;
+      }).join("");
+    }
+
+    function renderCareerPlan() {
+      const p = getProfile();
+      const signals = detectSignals(p);
+      const rolePairs = recommendedRoleNames(p, signals);
+      const topScore = rolePairs[0]?.[1].match || 70;
+      $("careerReport").innerHTML = `
+        <div class="stale-banner" id="careerStale">表单内容已变更，请重新点击“推荐就业计划”更新分析。</div>
+        <div class="report-hero">
+          <div>
+            <div class="verdict">${careerHeadline(rolePairs, signals)}</div>
+            <h2>${escapeHtml(p.major || "当前专业")} · ${escapeHtml(p.uni.name)}</h2>
+            <p>本报告基于当前填写的专业、课程、目标岗位、城市和背景生成；修改表单后再次点击按钮，会重新计算岗位排序、匹配度和六维图。</p>
+          </div>
+          <div class="score-circle" style="--score:${topScore}"><span>${topScore}</span></div>
+        </div>
+        <div class="report-body">
+          <section class="report-section">
+            <h2>推荐城市与行业</h2>
+            <table class="table">
+              <thead><tr><th>优先级</th><th>城市</th><th>适合行业</th><th>原因</th></tr></thead>
+              <tbody>
+                ${cityRows(p, signals)}
+              </tbody>
+            </table>
+          </section>
+
+          <section class="report-section">
+            <h2>岗位推荐排序</h2>
+            <div class="role-grid">${rolePairs.map(([name, data]) => roleCard(name, data)).join("")}</div>
+          </section>
+
+          <section class="report-section">
+            <h2>近年来趋势下的路线建议</h2>
+            <ul class="analysis-list">
+              ${trendAdvice(p, signals)}
+              ${recommendationSummary(rolePairs)}
+            </ul>
+          </section>
+
+          <section class="report-section">
+            <h2>建议投递队列</h2>
+            <table class="table">
+              <thead><tr><th>队列</th><th>岗位</th><th>目标公司层级</th><th>投递策略</th></tr></thead>
+              <tbody>
+                ${queueRows(rolePairs)}
+              </tbody>
+            </table>
+          </section>
+
+          <section class="report-section">
+            <h2>引用来源</h2>
+            <div class="notice">薪资为公开校招、社招样本与行业经验综合估算，城市、公司和岗位建议属于经验判断；使用前建议结合当年校招 JD 二次校准。</div>
+            ${sourceList()}
+          </section>
+        </div>
+      `;
+      lastRenderedReport = "career";
+      lastRenderedSnapshot = profileSnapshot();
+      showOnly("careerReport");
+    }
+
+    function fillCase() {
+      setSchoolMode("top200");
+      countrySelect.value = "马来西亚";
+      renderUniversities();
+      universitySelect.value = "Universiti Sains Malaysia (USM)";
+      degreeSelect.value = "硕士";
+      toggleMasters();
+      $("bachelorSchool").value = "华东理工大学";
+      $("bachelorMajor").value = "油气储运工程";
+      $("masterSchool").value = "";
+      $("masterMajor").value = "";
+      $("major").value = "Cyber Security，1年制授课型硕士";
+      $("courses").value = [
+        "Semester I",
+        "Internet Governance (core - 4 units)",
+        "Advanced Internet Security (core - 4 units)",
+        "Cybersecurity Research Methodology (core - 4 units)",
+        "Cyber Security Audit and Assessment (elective - 4 units)",
+        "Cyber Operations (elective - 4 units)",
+        "Information Security and Cryptography (elective - 4 units)",
+        "Semester II",
+        "Identity and Access Management (core - 4 units)",
+        "Authorized Security Testing (core - 4 units)",
+        "Cyber Security Project (core - 10 units)",
+        "Security and Risk Management (elective - 4 units)",
+        "Security Intelligence (elective - 4 units)",
+        "Forensic Analytics and Digital Investigations (elective - 4 units)"
+      ].join("\n");
+      $("targetRoles").value = "产品经理、数据分析、商业分析、算法工程师、前端工程师、后端工程师、AI/ML工程师";
+      $("targetCities").value = "第一梯队：上海、杭州；第二梯队：深圳、广州";
+      $("background").value = "江苏人，25岁，男。本科：华东理工大学油气储运工程专业学士。3年 EHS 工作经历。希望从传统工科转入 IT 或数字化行业，目标是高薪、成长性和城市机会。";
+      renderCompetition();
+    }
+
+    countrySelect.addEventListener("change", renderUniversities);
+    degreeSelect.addEventListener("change", toggleMasters);
+    $("qsTopBtn").addEventListener("click", () => setSchoolMode("top200"));
+    $("qsAfterBtn").addEventListener("click", () => setSchoolMode("after200"));
+    $("customUniversity").addEventListener("change", autofillCustomSchool);
+    $("caseBtn").addEventListener("click", fillCase);
+    $("evaluateBtn").addEventListener("click", renderCompetition);
+    $("recommendBtn").addEventListener("click", renderCareerPlan);
+
+    let lastRenderedReport = "";
+    let lastRenderedSnapshot = "";
+
+    function profileSnapshot() {
+      return JSON.stringify(getProfile());
+    }
+
+    function markStaleIfNeeded() {
+      if (!lastRenderedReport || !lastRenderedSnapshot || profileSnapshot() === lastRenderedSnapshot) return;
+      const stale = lastRenderedReport === "competition" ? $("competitionStale") : $("careerStale");
+      if (stale) stale.classList.add("show");
+    }
+
+    ["country", "university", "customUniversity", "schoolTier", "customQsRank", "customChinaRank", "degree", "major", "bachelorSchool", "bachelorMajor", "masterSchool", "masterMajor", "courses", "targetRoles", "targetCities", "background"].forEach(id => {
+      $(id).addEventListener("input", markStaleIfNeeded);
+      $(id).addEventListener("change", markStaleIfNeeded);
+    });
+
+    initSelectors();
+    setSchoolMode("top200");
+    toggleMasters();
+  </script>
+</body>
+</html>
